@@ -101,7 +101,8 @@
             return {openCases: [], activeKeyIndex: 0};
         },
         handleClick: function(cases, index){
-            //alert("index:" + index + " cases=" + cases);
+            console.log("index:" + index + " cases= " + JSON.stringify(cases));
+            //console.log(cases);
             this.props.onShowQuery(cases[index].id);
             this.setState({activeKeyIndex: index})
         },
@@ -111,6 +112,7 @@
                 dataType: 'json',
                 success: function (data) {
                     this.setState({openCases: data});
+                    if(data && data.length > 0) this.props.onShowQuery(data[0].id);
                 }.bind(this),
                 error: function (xhr, status, err) {
                     console.error(this.props.url, status, err.toString());

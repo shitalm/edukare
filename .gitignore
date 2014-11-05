@@ -12,7 +12,12 @@
 log/
 target/
 
-SATSSchema/src/main/java/
+# node
+node_modules/
+build/
+
+#misc
+*.log
 
 # OS generated files #
 ######################

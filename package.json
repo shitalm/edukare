@@ -1,0 +1,9 @@
+{
+  "name": "edukare",
+  "scripts": {
+    "build": "browserify -t reactify src/app.js -o build/bundle.js",
+    "watch": "watchify -t reactify src/app.js -o build/bundle.js --debug --verbose",
+    "jsx": "jsx --watch src build"
+  }
+}
+

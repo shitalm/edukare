@@ -1,8 +1,11 @@
 /** @jsx React.DOM */
 
-(function() {
-    var Panel = ReactBootstrap.Panel;
-    var Input = ReactBootstrap.Input;
+    var React = require("react");
+    var $ = require("jquery");
+    var Panel = require("react-bootstrap/Panel");
+    var Input = require("react-bootstrap/Input");
+    var Nav = require("react-bootstrap/Nav");
+    var NavItem = require("react-bootstrap/NavItem");
 
     var Comment = React.createClass({
         render: function () {
@@ -163,8 +166,11 @@
     });
 
 
+/*
     React.renderComponent(
         <QueryPage />,
         document.getElementById('content')
     );
-})();   //anonymous self executing function to keep the global scope clean
+*/
+
+module.exports = QueryPage;

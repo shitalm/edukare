@@ -1,0 +1,103 @@
+{
+  "name": "edukare",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": {
+      "version": "2.1.1",
+      "from": "jquery@2.1.1",
+      "resolved": "https://registry.npmjs.org/jquery/-/jquery-2.1.1.tgz"
+    },
+    "react": {
+      "version": "0.11.2",
+      "from": "react@0.11.2",
+      "resolved": "https://registry.npmjs.org/react/-/react-0.11.2.tgz",
+      "dependencies": {
+        "envify": {
+          "version": "2.0.1",
+          "from": "envify@>=2.0.0 <3.0.0",
+          "resolved": "https://registry.npmjs.org/envify/-/envify-2.0.1.tgz",
+          "dependencies": {
+            "xtend": {
+              "version": "2.1.2",
+              "from": "xtend@>=2.1.2 <2.2.0",
+              "resolved": "https://registry.npmjs.org/xtend/-/xtend-2.1.2.tgz",
+              "dependencies": {
+                "object-keys": {
+                  "version": "0.4.0",
+                  "from": "object-keys@>=0.4.0 <0.5.0",
+                  "resolved": "https://registry.npmjs.org/object-keys/-/object-keys-0.4.0.tgz"
+                }
+              }
+            },
+            "through": {
+              "version": "2.3.6",
+              "from": "through@>=2.3.4 <2.4.0",
+              "resolved": "https://registry.npmjs.org/through/-/through-2.3.6.tgz"
+            },
+            "esprima-fb": {
+              "version": "3001.1.0-dev-harmony-fb",
+              "from": "esprima-fb@>=3001.1.0-dev-harmony-fb <3001.2.0",
+              "resolved": "https://registry.npmjs.org/esprima-fb/-/esprima-fb-3001.0001.0000-dev-harmony-fb.tgz"
+            },
+            "jstransform": {
+              "version": "3.0.0",
+              "from": "jstransform@>=3.0.0 <3.1.0",
+              "resolved": "https://registry.npmjs.org/jstransform/-/jstransform-3.0.0.tgz",
+              "dependencies": {
+                "base62": {
+                  "version": "0.1.1",
+                  "from": "base62@0.1.1",
+                  "resolved": "https://registry.npmjs.org/base62/-/base62-0.1.1.tgz"
+                },
+                "source-map": {
+                  "version": "0.1.31",
+                  "from": "source-map@0.1.31",
+                  "resolved": "https://registry.npmjs.org/source-map/-/source-map-0.1.31.tgz",
+                  "dependencies": {
+                    "amdefine": {
+                      "version": "0.1.0",
+                      "from": "amdefine@>=0.0.4",
+                      "resolved": "https://registry.npmjs.org/amdefine/-/amdefine-0.1.0.tgz"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "react-bootstrap": {
+      "version": "0.12.0",
+      "from": "react-bootstrap@0.12.0",
+      "resolved": "https://registry.npmjs.org/react-bootstrap/-/react-bootstrap-0.12.0.tgz"
+    },
+    "react-router": {
+      "version": "0.9.5",
+      "from": "react-router@>=0.9.5 <0.10.0",
+      "resolved": "https://registry.npmjs.org/react-router/-/react-router-0.9.5.tgz",
+      "dependencies": {
+        "events": {
+          "version": "1.0.1",
+          "from": "events@1.0.1",
+          "resolved": "https://registry.npmjs.org/events/-/events-1.0.1.tgz"
+        },
+        "qs": {
+          "version": "2.2.2",
+          "from": "qs@2.2.2",
+          "resolved": "https://registry.npmjs.org/qs/-/qs-2.2.2.tgz"
+        },
+        "when": {
+          "version": "3.4.6",
+          "from": "when@3.4.6",
+          "resolved": "https://registry.npmjs.org/when/-/when-3.4.6.tgz"
+        }
+      }
+    },
+    "react-router-bootstrap": {
+      "version": "0.5.0",
+      "from": "git://github.com/shitalm/react-router-bootstrap.git",
+      "resolved": "git://github.com/shitalm/react-router-bootstrap.git#20316de70f0cca1eb3cbf113e0159efd861d3df3"
+    }
+  }
+}

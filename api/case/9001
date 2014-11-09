@@ -1,0 +1,12 @@
+[
+  {
+    "author": "Shital Mehta",
+    "date": "10-10-2013",
+    "text": "How to detect closed loop in a linked list"
+  },
+  {
+    "author": "Teacher",
+    "date": "11-10-2013",
+    "text": "Use lazy pointer"
+  }
+]

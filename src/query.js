@@ -63,7 +63,7 @@ var QueryBox = React.createClass({
             url: "api/case/" + queryId,
             dataType: 'json',
             success: function (data) {
-                this.setState({data: data});
+                this.setState({data: data, queryId: queryId});
             }.bind(this),
             error: function (xhr, status, err) {
                 console.error(url, status, err.toString());
@@ -82,12 +82,12 @@ var QueryBox = React.createClass({
         console.log("newQueryId: " + newQueryId + " currentQueryId: " + this.state.queryId);
         // for optimisation, don't do ajax call if old url is same as new url
         if (this.state.queryId != newQueryId) {
-            this.setState({queryId: newQueryId});
+            console.log("Fetching new query id: " + newQueryId);
             this.getQuery(newQueryId);
         }
     },
     render: function () {
-        console.log("query::render");
+        console.log("query::render " + JSON.stringify(this.state.data));
         return (
             <div className="commentBox" className="col-md-10">
                 <CommentList data={this.state.data} />

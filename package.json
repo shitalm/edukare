@@ -11,7 +11,7 @@
     "react": "^0.11.2",
     "react-bootstrap": "0.12.0",
     "react-router": "^0.9.5",
-    "react-router-bootstrap": "git://github.com/shitalm/react-router-bootstrap.git"
+    "react-router-bootstrap": "git://github.com/shitalm/react-router-bootstrap"
   },
   "devDependencies": {
     "react-tools": "0.11.0",

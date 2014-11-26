@@ -5,6 +5,7 @@ var $ = require("jquery");
 var Panel = require("react-bootstrap/Panel");
 var Nav = require("react-bootstrap/Nav");
 var NavItem = require("react-bootstrap/NavItem");
+var CommentForm = require("./newpost.js");
 
 var Comment = React.createClass({
     render: function () {
@@ -22,21 +23,6 @@ var Comment = React.createClass({
 });
 
 var CommentList = React.createClass({
-    getInitialState: function () {
-        return {data: []};
-    },
-    componentDidMount: function () {
-        $.ajax({
-            url: this.props.url,
-            dataType: 'json',
-            success: function (data) {
-                this.setState({data: data});
-            }.bind(this),
-            error: function (xhr, status, err) {
-                console.error(this.props.url, status, err.toString());
-            }.bind(this)
-        });
-    },
     render: function () {
         var commentNodes = this.props.data.map(function (comment) {
             return (
@@ -56,7 +42,7 @@ var CommentList = React.createClass({
 
 var QueryBox = React.createClass({
     getInitialState: function () {
-        return {queryId: "new", data: []};
+        return {queryId: "new", data: null};
     },
     getQuery: function (queryId) {
         $.ajax({
@@ -86,11 +72,17 @@ var QueryBox = React.createClass({
             this.getQuery(newQueryId);
         }
     },
+
     render: function () {
         console.log("query::render " + JSON.stringify(this.state.data));
+        if(this.state.data == null) return null;
+        var query = this.state.data;
         return (
             <div className="commentBox" className="col-md-10">
-                <CommentList data={this.state.data} />
+                <CommentList data={this.state.data ? query["posts"] : []} />
+                {
+                    query["status"] !== "open" ? "" : <CommentForm/>
+                }
             </div>
         );
     }

@@ -1,12 +1,17 @@
-[
-  {
-    "author": "Shital Mehta",
-    "date": "10-10-2014",
-    "text": "Not able to do post order graph traversal"
-  },
-  {
-    "author": "Teacher",
-    "date": "11-10-2014",
-    "text": "Do pre-order for now."
-  }
-]
+{
+  "id": "1234",
+  "status": "closed",
+  "posts":
+    [
+      {
+        "author": "Shital Mehta",
+        "date": "10-10-2014",
+        "text": "Not able to do post order graph traversal"
+      },
+      {
+        "author": "Teacher",
+        "date": "11-10-2014",
+        "text": "Do pre-order for now."
+      }
+    ]
+}

@@ -1,12 +1,17 @@
-[
-  {
-    "author": "Shital Mehta",
-    "date": "10-10-2014",
-    "text": "Can't understand how blackhols can evaporate"
-  },
-  {
-    "author": "Teacher",
-    "date": "11-10-2014",
-    "text": "Call Hawkins. Its beyond me too!"
-  }
-]
+{
+  "id": "1234",
+  "status": "open",
+  "posts":
+    [
+      {
+        "author": "Shital Mehta",
+        "date": "10-10-2014",
+        "text": "Can't understand how blackhols can evaporate"
+      },
+      {
+        "author": "Teacher",
+        "date": "11-10-2014",
+        "text": "Call Hawkins. Its beyond me too!"
+      }
+    ]
+}

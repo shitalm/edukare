@@ -1,7 +1,5 @@
 /** @jsx React.DOM */
 var React = require("react");
-var Inbox = require("./inbox");
-var Navigation = require("./navigation");
 var Nav = require("react-bootstrap/Nav");
 var Navbar = require("react-bootstrap/Navbar");
 var NavItemLink = require("react-router-bootstrap").NavItemLink;
@@ -10,9 +8,11 @@ var Routes = Router.Routes;
 var Route = Router.Route;
 var DefaultRoute = Router.DefaultRoute;
 var Link = Router.Link;
-var Home = require("./home");
-var QueryBox = require("./query");
-var NewPost = require("./newpost");
+
+var Home = require("../views/home");
+var QueryBox = require("../views/query");
+var Inbox = require("../views/inbox");
+
 
 global.React = React;
 
@@ -55,4 +55,4 @@ var routes = (
     </Routes>
 );
 
-React.renderComponent(routes, document.body);
+module.exports = routes;

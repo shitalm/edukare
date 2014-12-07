@@ -14,6 +14,7 @@ var CorpAdmin = require("./../views/corp");
 var CorpList = require("./../views/corplist");
 var CorpEdit = require("./../views/corpedit");
 var CorpAdd = require("./../views/corpadd");
+var CorpView = require("./../views/corpview");
 var Plan = require("./../views/plan");
 
 global.React = React;
@@ -28,9 +29,9 @@ var App = React.createClass({
                     <Navbar componentClass={React.DOM.header} inverse
                         staticTop role="banner" brand={brand} toggleNavKey={0}
                         className="bs-docs-nav" fluid>
-                        <Nav role="navigation" key={0} className="bs-navbar-collapse">
+                        <Nav role="navigation" activeKey={1} className="bs-navbar-collapse">
                             <NavItemLink key={1} to="home">Home</NavItemLink>
-                            <NavItemLink key={2} to="corp">Admin</NavItemLink>
+                            <NavItemLink key={2} to="corplist">Admin</NavItemLink>
                             <NavItemLink key={3} to="aboutus">About Us</NavItemLink>
                         </Nav>
                     </Navbar>
@@ -52,7 +53,7 @@ var routes = (
                     <Route name="corplist" path="list" handler={CorpList}/>
                     <Route name="corpadd" path="add" handler={CorpAdd}/>
                     <Route name="corpedit" path="edit" handler={CorpEdit}/>
-                    <DefaultRoute name="def-corp-list" handler={CorpList} />
+                    <Route name="corpview" path="view/:corpId" handler={CorpView}/>
                 </Route>
                 <Route name="plan" path="plan" handler={Plan}/>
                 <DefaultRoute name="def-corp" handler={CorpList} />

@@ -6,7 +6,7 @@ var ReactRouterBootstrap = require("react-router-bootstrap");
 
 var PageHeader = ReactBootStrap.PageHeader;
 var Table = ReactBootStrap.Table;
-var Link = ReactRouterBootstrap.ButtonLink;
+var Link = ReactRouterBootstrap.NavItemLink;
 
 
 
@@ -14,7 +14,7 @@ var CorpInstance = function(corp, onClickHandler) {
     console.log("CorpInstance:: " + JSON.stringify(corp));
     return (
         <tr key={corp.domain}>
-            <td>{corp.name}</td>
+            <td><Link to="corpview" corpId={corp.id}>{corp.name}</Link></td>
             <td>{corp.email}</td>
             <td>{corp.primaryPhone}</td>
             <td>{corp.domain}</td>

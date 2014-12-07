@@ -1,11 +1,13 @@
 /** @jsx React.DOM */
 var React = require("react");
-var ReactBootStrap = require("react-bootstrap");
+var ReactBootstrap = require("react-bootstrap");
 var ReactRouterBootstrap = require("react-router-bootstrap");
 
-var ButtonToolbar = ReactBootStrap.ButtonToolbar;
-var Link = ReactRouterBootstrap.ButtonLink;
-var Panel = ReactBootStrap.Panel;
+var ButtonToolbar = ReactBootstrap.ButtonToolbar;
+var ButtonLink = ReactRouterBootstrap.ButtonLink;
+var Nav = ReactBootstrap.Nav;
+var Panel = ReactBootstrap.Panel;
+var NavItemLink = ReactRouterBootstrap.NavItemLink;
 
 
 var CorpAdmin = React.createClass({
@@ -14,10 +16,16 @@ var CorpAdmin = React.createClass({
         return (
             <div>
                 <Panel>
-                    <ButtonToolbar>
-                        <Link to="corpadd" bsStyle="primary">Add</Link>
-                        <Link to="corplist" bsStyle="primary">List</Link>
+                    <Nav bsStyle="pills" activeKey={1}>
+                        <NavItemLink key={0} to="corpadd">Add</NavItemLink>
+                        <NavItemLink key={1} to="corplist">List</NavItemLink>
+                    </Nav>
+                {/**
+                    <ButtonToolbar activeKey={0}>
+                        <ButtonLink bsStyle={this.state && this.state.active ? "primary" : null} to="corpadd" key={0}>Add</ButtonLink>
+                        <ButtonLink bsStyle={this.state && this.state.active ? "primary" : null} to="corplist" key={1}>List</ButtonLink>
                     </ButtonToolbar>
+                 **/}
                 </Panel>
                 {/* this is the important part */}
                 <this.props.activeRouteHandler />

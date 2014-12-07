@@ -6,13 +6,8 @@ var ReactRouterBootstrap = require("react-router-bootstrap");
 var ReactRouter = require("react-router");
 
 var Nav = ReactBootstrap.Nav;
-var Navbar = ReactBootstrap.Navbar;
-var NavItem = ReactBootstrap.NavItem;
-var PanelGroup = ReactBootstrap.PanelGroup;
 var Panel = ReactBootstrap.Panel;
-
 var NavItemLink = ReactRouterBootstrap.NavItemLink;
-var Link = ReactRouter.Link;
 
 var $ = require("jquery");
 
@@ -23,7 +18,7 @@ var Navigation = React.createClass({
         return (
             <Panel header="Admin" key={1}>
                 <Nav bsStyle="pills" stacked activeKey={0}>
-                    <NavItemLink key={0} to="corp">Corporation</NavItemLink>
+                    <NavItemLink key={0} to="corplist">Corporation</NavItemLink>
                     <NavItemLink key={1} to="plan">Plan</NavItemLink>
                 </Nav>
             </Panel>

@@ -7,18 +7,23 @@ var ReactRouterBootstrap = require("react-router-bootstrap");
 var PageHeader = ReactBootStrap.PageHeader;
 var Table = ReactBootStrap.Table;
 var Link = ReactRouterBootstrap.NavItemLink;
+var CorpStore = require("../stores/corpstore");
+var Alert = ReactBootStrap.Alert;
 
 
-
-var CorpInstance = function(corp, onClickHandler) {
+var CorpInstance = function (corp, onClickHandler) {
     console.log("CorpInstance:: " + JSON.stringify(corp));
     return (
-        <tr key={corp.domain}>
-            <td><Link to="corpview" corpId={corp.id}>{corp.name}</Link></td>
-            <td>{corp.email}</td>
-            <td>{corp.primaryPhone}</td>
+        <tr key={corp.id}>
+            <td>
+                <Link to="corpview" corpId={corp.id}>{corp.name}</Link>
+            </td>
+            <td>{corp.contact.email}</td>
+            <td>{corp.contact.primaryPhone}</td>
             <td>{corp.domain}</td>
-            <td><Link to="corpedit" bsStyle="primary">Edit</Link></td>
+            <td>
+                <Link to="corpedit" corpId={corp.id} bsStyle="primary">Edit</Link>
+            </td>
         </tr>
     );
 }
@@ -28,58 +33,55 @@ var CorpList = React.createClass({
 
     getInitialState: function () {
         return {
-            corpList: null
+            corpList: null,
+            alert: null
         };
     },
-    getQuery: function () {
-        $.ajax({
-            url: "api/corp/all.json",
-            dataType: 'json',
-            success: function (data) {
-                this.setState({corpList: data});
-            }.bind(this),
-            error: function (xhr, status, err) {
-                console.error(url, status, err.toString());
-            }.bind(this)
-        });
+    setData: function (data) {
+        console.log("corplist::setData corpList=" + JSON.stringify(data));
+        this.setState({corpList: data});
     },
+
+    processError: function (url, status, error) {
+        console.error("corplist::processError", url, status, error);
+        this.setState({alert: error.toString()});
+    },
+
     componentDidMount: function () {
         console.log("corpadmin::componentDidMount");
-        this.getQuery();
+        //this.getQuery();
+        CorpStore.list(this.setData, this.processError);
+
     },
-    render: function() {
+    render: function () {
         console.log("corpadmin::render corpList= " + JSON.stringify(this.state.corpList));
-        return(
-            <Table striped bordered condensed hover>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Primary Phone</th>
-                    <th>Domain</th>
-                    <th/>
-                </tr>
-            </thead>
-            <tbody>
-            {
-                this.state.corpList && this.state.corpList.map(function(corp) {
-                    return CorpInstance(corp, this.handleToggle);
-                }, this)
-            }
-            </tbody>
-            </Table>
-        );
-    }
-});
-
-var CorpAdmin = React.createClass({
-    render: function() {
-        return(
+        var alert = <Alert bsStyle="warning">Sorry, we encountered an error: {this.state.alert}</Alert>
+        return (
             <div>
-                <CorpList />
+                <Table striped bordered condensed hover>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Primary Phone</th>
+                            <th>Domain</th>
+                            <th/>
+                        </tr>
+                    </thead>
+                    <tbody>
+            {
+            this.state.corpList && this.state.corpList.map(function (corp) {
+                return CorpInstance(corp, this.handleToggle);
+            }, this)
+                }
+                    </tbody>
+                </Table>
+                {this.state.alert && alert}
             </div>
+
         );
     }
 });
 
-module.exports = CorpAdmin;
+
+module.exports = CorpList;

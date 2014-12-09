@@ -43,12 +43,16 @@ var CorpEdit = React.createClass({
 
     },
 
+    update: function(corp, onSuccess, onError) {
+        CorpStore.update(corp.id, corp, onSuccess, onError);
+    },
+
     render: function () {
         var corp = this.getCorp();
         console.log("corpedit::render corp=" + JSON.stringify(corp));
         return (
             <div>
-                <CorpForm onSubmit={CorpStore.update} value={corp} action="edit"/>
+                <CorpForm onSubmit={this.update} value={corp} action="edit"/>
                 {this.state.alert}
             </div>
         );

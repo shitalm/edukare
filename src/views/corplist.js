@@ -55,6 +55,9 @@ var CorpList = React.createClass({
         console.log("corpadmin::componentDidMount");
         //this.getQuery();
         CorpStore.list(this.setData, this.processError);
+        if (this.props.query.action == "delete") {
+            this.setState({alert: <Alert bsStyle="success">Successfully deleted corporation.</Alert>});
+        }
     },
 
     onDelete: function(e) {

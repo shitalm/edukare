@@ -5,19 +5,24 @@ var $ = require("jquery");
 var ReactBootStrap = require("react-bootstrap");
 var ReactRouterBootstrap = require("react-router-bootstrap");
 var CorpStore = require("../stores/corpstore");
+var Router = require("react-router");
 
 var PageHeader = ReactBootStrap.PageHeader;
 var Table = ReactBootStrap.Table;
 var Alert = ReactBootStrap.Alert;
-var Link = ReactRouterBootstrap.NavItemLink;
+var Button = ReactBootStrap.Button;
+var ButtonToolbar = ReactBootStrap.ButtonToolbar;
+var Link = ReactRouterBootstrap.ButtonLink;
+var Nav = ReactBootStrap.Nav;
 
 
-var corpInstance = function (corp) {
-    if(!corp) return;
+var corpInstance = function (corp, onDelete) {
+    if (!corp) return;
     return (
         <div>
             <Table>
                 <tbody>
+
                     <tr>
                         <td>Id</td>
                         <td>{corp.id}</td>
@@ -38,8 +43,14 @@ var corpInstance = function (corp) {
                         <td>Domain</td>
                         <td>{corp.domain}</td>
                     </tr>
+
                 </tbody>
             </Table>
+            <ButtonToolbar>
+                <Link  to="corpedit" corpId={corp.id} bsStyle="primary">Edit</Link>
+                <Button onClick={onDelete} bsStyle="danger" value={corp.id}>Delete</Button>
+            </ButtonToolbar>
+
         </div>
     );
 };
@@ -57,17 +68,34 @@ var CorpView = React.createClass({
         this.setState({data: corpData});
     },
 
-    processError: function(url, status, error) {
+    processError: function (url, status, error) {
         console.error("corpview::processError", url, status, error);
         this.setState({alert: <Alert bsStyle="warning">Sorry, we encountered an error: {error.toString()}</Alert>});
+    },
+
+    onDelete: function (e) {
+        corpId = e.target.value;
+        console.log("corplist::onDelete corpid=" + JSON.stringify(corpId));
+        CorpStore.remove(corpId, this.onDeleteSuccess, this.onDeleteFailure)
+    },
+
+    onDeleteSuccess: function (corp) {
+        console.log("corplist::processDeleteSuccess id: " + corp.id);
+        this.setState({data: null})
+        this.setState({alert: <Alert bsStyle="success">Successfully deleted corporation!</Alert>});
+    },
+
+    onDeleteFailure: function (url, status, error) {
+        console.error("corplist::onDeleteFailure id: " + corp.id);
+        this.setState({alert: <Alert bsStyle="warning">Failed to delete delete corporation. Error: {error.toString()} </Alert>});
     },
 
     componentDidMount: function () {
         console.log("CorpView::componentDidMount corpId: " + this.props.params.corpId);
         console.log("CorpView::componentDidMount query=" + JSON.stringify(this.props.query));
-        if(this.props.query.action == "add") {
+        if (this.props.query.action == "add") {
             this.setState({alert: <Alert bsStyle="success">Successfully added new corporation.</Alert>});
-        } else if(this.props.query.action == "edit") {
+        } else if (this.props.query.action == "edit") {
             this.setState({alert: <Alert bsStyle="success">Successfully edited corporation.</Alert>});
         }
         CorpStore.get(this.props.params.corpId, this.setCorpData, this.processError);
@@ -79,7 +107,7 @@ var CorpView = React.createClass({
         return (
             <div>
                 <h2>Corp View</h2>
-                {corpInstance(this.state.data)}
+                {corpInstance(this.state.data, this.onDelete)}
                 {this.state.alert}
             </div>
         )

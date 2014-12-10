@@ -17,13 +17,13 @@ var CorpInstance = function (corp, onDelete) {
     return (
         <tr key={corp.id}>
             <td>
-                <Link to="corpview" corpId={corp.id}>{corp.name}</Link>
+                <Link to="corpview" id={corp.id}>{corp.name}</Link>
             </td>
             <td>{corp.contact.email}</td>
             <td>{corp.contact.primaryPhone}</td>
             <td>{corp.domain}</td>
             <td>
-                <Link to="corpedit" corpId={corp.id} bsStyle="primary">Edit</Link>
+                <Link to="corpedit" id={corp.id} bsStyle="primary">Edit</Link>
             </td>
             <td>
                 <Button onClick={onDelete} bsStyle="danger" value={corp.id}>Delete</Button>

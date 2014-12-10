@@ -1,37 +1,19 @@
 /** @jsx React.DOM */
 
 var React = require("react");
-var CorpForm = require("./corpform");
+var EditEntity = require("./editentity");
 var CorpStore = require("../stores/corpstore");
+var CorpSchema = require("./corpschema");
+var Router = require("react-router");
 
+var Navigation = Router.Navigation;
 
 var CorpEdit = React.createClass({
 
-    getInitialState: function () {
-        return {
-            data: null,
-            alert: null
-        };
-    },
+    mixins: [Navigation],
 
-    processError: function (url, status, error) {
-        console.error("CorpEdit::processError", url, status, error);
-        this.setState({alert: <Alert bsStyle="warning">Sorry, we encountered an error: {error.toString()}</Alert>});
-    },
-
-
-    setCorpData: function (corpData) {
-        console.log("CorpEdit::setCorpData corpData=" + JSON.stringify(corpData));
-        this.setState({data: corpData});
-    },
-
-    componentDidMount: function () {
-        console.log("CorpEdit::componentDidMount corpId: " + this.props.params.corpId);
-        CorpStore.get(this.props.params.corpId, this.setCorpData, this.processError);
-    },
-
-    getCorp: function() {
-        corpData = this.state.data;
+    convertToFormData: function(entityData) {
+        corpData = entityData;
         if(!corpData) return {};
         return {
             id: corpData.id,
@@ -43,17 +25,20 @@ var CorpEdit = React.createClass({
 
     },
 
-    update: function(corp, onSuccess, onError) {
-        CorpStore.update(corp.id, corp, onSuccess, onError);
+    onSuccess: function(id) {
+        console.log("CorpEdit::onSuccess id: " + JSON.stringify(id));
+        this.transitionTo('/admin/corp/view/:id', {id: id}, {action: "edit"});
     },
 
     render: function () {
-        var corp = this.getCorp();
-        console.log("corpedit::render corp=" + JSON.stringify(corp));
         return (
             <div>
-                <CorpForm onSubmit={this.update} value={corp} action="edit"/>
-                {this.state.alert}
+                <EditEntity id={this.props.params.id}
+                            schema={CorpSchema}
+                            store={CorpStore}
+                            onSuccess={this.onSuccess}
+                            convertToFormData={this.convertToFormData}
+                />
             </div>
         );
 

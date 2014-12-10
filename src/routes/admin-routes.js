@@ -52,8 +52,8 @@ var routes = (
                 <Route name="corp" path="corp" handler={CorpAdmin}>
                     <Route name="corplist" path="list" handler={CorpList}/>
                     <Route name="corpadd" path="add" handler={CorpAdd}/>
-                    <Route name="corpedit" path="edit/:corpId" handler={CorpEdit}/>
-                    <Route name="corpview" path="view/:corpId" handler={CorpView}/>
+                    <Route name="corpedit" path="edit/:id" handler={CorpEdit}/>
+                    <Route name="corpview" path="view/:id" handler={CorpView}/>
                 </Route>
                 <Route name="plan" path="plan" handler={Plan}/>
                 <DefaultRoute name="def-corp" handler={CorpList} />

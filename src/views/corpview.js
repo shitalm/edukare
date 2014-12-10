@@ -47,7 +47,7 @@ var corpInstance = function (corp, onDelete) {
                 </tbody>
             </Table>
             <ButtonToolbar>
-                <Link  to="corpedit" corpId={corp.id} bsStyle="primary">Edit</Link>
+                <Link  to="corpedit" id={corp.id} bsStyle="primary">Edit</Link>
                 <Button onClick={onDelete} bsStyle="danger" value={corp.id}>Delete</Button>
             </ButtonToolbar>
 
@@ -64,7 +64,7 @@ var CorpView = React.createClass({
     },
 
     setCorpData: function (corpData) {
-        console.log("corpview::setCorpData corpData=" + JSON.stringify(corpData));
+        console.log("corpview::setFormData corpData=" + JSON.stringify(corpData));
         this.setState({data: corpData});
     },
 
@@ -91,14 +91,14 @@ var CorpView = React.createClass({
     },
 
     componentDidMount: function () {
-        console.log("CorpView::componentDidMount corpId: " + this.props.params.corpId);
+        console.log("CorpView::componentDidMount corpId: " + this.props.params.id);
         console.log("CorpView::componentDidMount query=" + JSON.stringify(this.props.query));
         if (this.props.query.action == "add") {
             this.setState({alert: <Alert bsStyle="success">Successfully added new corporation.</Alert>});
         } else if (this.props.query.action == "edit") {
             this.setState({alert: <Alert bsStyle="success">Successfully edited corporation.</Alert>});
         }
-        CorpStore.get(this.props.params.corpId, this.setCorpData, this.processError);
+        CorpStore.get(this.props.params.id, this.setCorpData, this.processError);
     },
 
     render: function () {

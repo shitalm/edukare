@@ -17,8 +17,8 @@ var CorpAdmin = React.createClass({
             <div>
                 <Panel>
                     <Nav bsStyle="pills" activeKey={1}>
-                        <NavItemLink key={0} to="corpadd">Add</NavItemLink>
-                        <NavItemLink key={1} to="corplist">List</NavItemLink>
+                        <NavItemLink key={0} to="add">Add</NavItemLink>
+                        <NavItemLink key={1} to="list">List</NavItemLink>
                     </Nav>
                 {/**
                     <ButtonToolbar activeKey={0}>

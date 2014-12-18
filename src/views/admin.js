@@ -18,7 +18,7 @@ var Navigation = React.createClass({
         return (
             <Panel header="Admin" key={1}>
                 <Nav bsStyle="pills" stacked activeKey={0}>
-                    <NavItemLink key={0} to="corplist">Corporation</NavItemLink>
+                    <NavItemLink key={0} to="/admin/corp/list">Corporation</NavItemLink>
                     <NavItemLink key={1} to="plan">Plan</NavItemLink>
                 </Nav>
             </Panel>

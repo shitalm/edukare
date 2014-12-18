@@ -73,8 +73,8 @@ var CorpForm = React.createClass({
     },
 
     onSuccess: function(corpId) {
-        console.log("corpform::onSuccess new corpId: " + JSON.stringify(corpId));
-        this.transitionTo('/admin/corp/view/:corpId', {corpId: corpId}, {action: this.props.action});
+        console.log("corpform::onSuccess new entityId: " + JSON.stringify(entityId));
+        this.transitionTo('/admin/corp/view/:corpId', {corpId: entityId}, {action: this.props.action});
     },
 
     onError: function(url, status, error) {

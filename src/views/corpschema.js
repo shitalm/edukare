@@ -4,9 +4,21 @@ var ReactForms = require('react-forms')
 var Schema = ReactForms.schema.Schema
 var Property = ReactForms.schema.Property
 
+var convertToFormData = function(entityData) {
+    corpData = entityData;
+    if(!corpData) return {};
+    return {
+        id: corpData.id,
+        name: corpData.name,
+        email: corpData.contact.email,
+        primaryPhone: corpData.contact.primaryPhone,
+        domain: corpData.domain
+    }
+
+};
 
 var schema = (
-    <Schema>
+    <Schema convertToFormData={convertToFormData}>
         <Property
             name="name"
             required
@@ -35,6 +47,10 @@ var schema = (
             input={<input type="text" />}
         />
     </Schema>
-)
+);
+
+
+console.log("corpschema");
+console.log(schema);
 
 module.exports=schema;

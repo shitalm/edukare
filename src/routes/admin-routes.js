@@ -31,7 +31,7 @@ var App = React.createClass({
                         className="bs-docs-nav" fluid>
                         <Nav role="navigation" activeKey={1} className="bs-navbar-collapse">
                             <NavItemLink key={1} to="home">Home</NavItemLink>
-                            <NavItemLink key={2} to="corplist">Admin</NavItemLink>
+                            <NavItemLink key={2} to="/admin/corp/list">Admin</NavItemLink>
                             <NavItemLink key={3} to="aboutus">About Us</NavItemLink>
                         </Nav>
                     </Navbar>
@@ -50,10 +50,10 @@ var routes = (
             <Route name="home" path="home" handler={Home}/>
             <Route name="admin" path="admin"  handler={Admin}>
                 <Route name="corp" path="corp" handler={CorpAdmin}>
-                    <Route name="corplist" path="list" handler={CorpList}/>
-                    <Route name="corpadd" path="add" handler={CorpAdd}/>
-                    <Route name="corpedit" path="edit/:id" handler={CorpEdit}/>
-                    <Route name="corpview" path="view/:id" handler={CorpView}/>
+                    <Route name="list" path="list" handler={CorpList}/>
+                    <Route name="add" path="add" handler={CorpAdd}/>
+                    <Route name="edit" path="edit/:id" handler={CorpEdit}/>
+                    <Route name="view" path="view/:id" handler={CorpView}/>
                 </Route>
                 <Route name="plan" path="plan" handler={Plan}/>
                 <DefaultRoute name="def-corp" handler={CorpList} />

@@ -17,13 +17,13 @@ var CorpInstance = function (corp, onDelete) {
     return (
         <tr key={corp.id}>
             <td>
-                <Link to="corpview" id={corp.id}>{corp.name}</Link>
+                <Link to="view" id={corp.id}>{corp.name}</Link>
             </td>
             <td>{corp.contact.email}</td>
             <td>{corp.contact.primaryPhone}</td>
             <td>{corp.domain}</td>
             <td>
-                <Link to="corpedit" id={corp.id} bsStyle="primary">Edit</Link>
+                <Link to="edit" id={corp.id} bsStyle="primary">Edit</Link>
             </td>
             <td>
                 <Button onClick={onDelete} bsStyle="danger" value={corp.id}>Delete</Button>
@@ -61,9 +61,9 @@ var CorpList = React.createClass({
     },
 
     onDelete: function(e) {
-        corpId = e.target.value;
-        console.log("corplist::onDelete corpid=" + JSON.stringify(corpId));
-        CorpStore.remove(corpId, this.onDeleteSuccess, this.onDeleteFailure)
+        entityId = e.target.value;
+        console.log("corplist::onDelete corpid=" + JSON.stringify(entityId));
+        CorpStore.remove(entityId, this.onDeleteSuccess, this.onDeleteFailure)
     },
 
     onDeleteSuccess: function(corp) {
